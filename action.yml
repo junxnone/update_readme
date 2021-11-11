@@ -8,7 +8,11 @@ inputs:
   actor:
     description: "github.actor"
     required: true
-  branch:
+  work_branch:
+    description: "Target branch name to push the index"
+    required: true
+    default: "main"
+  push_branch:
     description: "Target branch name to push the index"
     required: true
     default: "gh-page"
@@ -17,7 +21,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -32,8 +35,8 @@ jobs:
         git config user.email "${{ inputs.actor }}@users.noreply.github.com"
         git config user.name "${{ inputs.actor }}"
         git pull ${REMOTE}
-        git checkout ${{ inputs.branch }}
+        git checkout ${{ inputs.work_branch }}
         git add README.md
         git status
         git commit -am "Add new comment"
-        git push ${REMOTE} ${{ inputs.branch }}
+        git push ${REMOTE} ${{ inputs.push_branch }}
