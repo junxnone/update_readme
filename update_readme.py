@@ -18,7 +18,7 @@ for inb in notebook_list:
 
 pre_category = 'init'
 with open("README.md", 'w') as indexf:
-    indexf.write("# Jupyter Notebook Index\n- [web](https://" + user_name + ".github.io/" + repo_name)
+    indexf.write("# Jupyter Notebook Index\n- [web](https://" + user_name + ".github.io/" + repo_name + ")")
 for ifile in file_category:
     category = file_category[ifile]
 
