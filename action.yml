@@ -23,17 +23,14 @@ runs:
     run: |
       wget https://raw.githubusercontent.com/junxnone/update-readme/main/update_readme.py
       python update_readme.py --repo "${{ github.repository }}"
-      mv README.md README.md.tmp
   - name: push to gh-page
     shell: bash
     run: |
       REMOTE=https://${{ inputs.GITHUB_TOKEN }}@github.com/${{ github.repository }}
       git config user.email "${{ inputs.actor }}@users.noreply.github.com"
       git config user.name "${{ inputs.actor }}"
-      git checkout -b ${{ inputs.push_branch }}
-      git pull ${REMOTE} ${{ inputs.push_branch }}:${{ inputs.push_branch }}
-      mv README.md.tmp README.md
+      git pull ${REMOTE}
       git add README.md
       git status
       git commit -am "Update Index"
-      git push ${REMOTE} ${{ inputs.push_branch }}:${{ inputs.push_branch }}
+      git push ${REMOTE}  ${{ inputs.branch }}
