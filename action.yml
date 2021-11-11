@@ -15,26 +15,25 @@ inputs:
     description: "Target branch name to push the index"
     required: true
     default: "gh-page"
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.x'
-    - name: update readme index
-      run: |
-        python update_readme.py --repo "{{ github.repository }}"
-    - name: push to gh-page
-      shell: bash
-      run: |
-        REMOTE=https://${{ inputs.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-        git config user.email "${{ inputs.actor }}@users.noreply.github.com"
-        git config user.name "${{ inputs.actor }}"
-        git pull ${REMOTE}
-        git checkout ${{ inputs.work_branch }}
-        git add README.md
-        git status
-        git commit -am "Add new comment"
-        git push ${REMOTE} ${{ inputs.push_branch }}
+runs:
+  using: "composite"
+  steps:
+  - name: Set up Python
+    uses: actions/setup-python@v2
+    with:
+      python-version: '3.x'
+  - name: update readme index
+    run: |
+      python update_readme.py --repo "{{ github.repository }}"
+  - name: push to gh-page
+    shell: bash
+    run: |
+      REMOTE=https://${{ inputs.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+      git config user.email "${{ inputs.actor }}@users.noreply.github.com"
+      git config user.name "${{ inputs.actor }}"
+      git pull ${REMOTE}
+      git checkout ${{ inputs.work_branch }}
+      git add README.md
+      git status
+      git commit -am "Add new comment"
+      git push ${REMOTE} ${{ inputs.push_branch }}
