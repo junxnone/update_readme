@@ -31,7 +31,7 @@ runs:
       git config user.email "${{ inputs.actor }}@users.noreply.github.com"
       git config user.name "${{ inputs.actor }}"
       git checkout -b ${{ inputs.push_branch }}
-      git pull ${REMOTE}
+      git pull
       mv README.md.tmp README.md
       git add README.md
       git status
