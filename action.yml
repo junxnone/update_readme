@@ -30,7 +30,7 @@ runs:
       git config user.email "${{ inputs.actor }}@users.noreply.github.com"
       git config user.name "${{ inputs.actor }}"
       git pull ${REMOTE}
-      git checkout ${{ inputs.push_branch }}
+      git checkout -b ${{ inputs.push_branch }}
       git add README.md
       git status
       git commit -am "Update Index"
