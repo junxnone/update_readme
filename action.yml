@@ -31,9 +31,9 @@ runs:
       git config user.email "${{ inputs.actor }}@users.noreply.github.com"
       git config user.name "${{ inputs.actor }}"
       git checkout -b ${{ inputs.push_branch }}
-      git pull ${REMOTE} ${{ inputs.push_branch }}
+      git pull ${REMOTE} ${{ inputs.push_branch }}:${{ inputs.push_branch }}
       mv README.md.tmp README.md
       git add README.md
       git status
       git commit -am "Update Index"
-      git push ${REMOTE} ${{ inputs.push_branch }}
+      git push ${REMOTE} ${{ inputs.push_branch }}:${{ inputs.push_branch }}
