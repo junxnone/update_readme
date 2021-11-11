@@ -6,7 +6,7 @@ import argparse
 ap = argparse.ArgumentParser()
 ap.add_argument('--repo', default='none')
 args = ap.parse_args()
-
+print(args.repo)
 repo_name = args.repo.split('/')[1]
 
 notebook_list = sorted(glob.glob('*/*.ipynb'))
