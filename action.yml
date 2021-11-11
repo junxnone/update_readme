@@ -26,7 +26,7 @@ runs:
     shell: bash
     run: |
       wget https://raw.githubusercontent.com/junxnone/update-readme/main/update_readme.py
-      python update_readme.py --repo "{{ github.repository }}"
+      python update_readme.py
   - name: push to gh-page
     shell: bash
     run: |
