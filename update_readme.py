@@ -13,14 +13,16 @@ repo_name = args.repo.split('/')[1]
 notebook_list = sorted(glob.glob('*/*.ipynb'))
 
 file_category = {}
+categorys = []
 for inb in notebook_list:
     file_category[inb] = inb.split('/')[0]
+    categorys.append(inb.split('/')[0])
 
 pre_category = 'init'
 with open("README.md", 'w') as indexf:
     indexf.write("# Jupyter Notebook Index\n")
-    for icategory in set(file_category):
-        indexf.write("- ["+ icategory +"](#" + icategory + ")")
+    for icategory in set(categorys):
+        indexf.write("- ["+ icategory +"](#" + icategory + ")\n")
 for ifile in file_category:
     category = file_category[ifile]
 
