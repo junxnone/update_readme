@@ -23,7 +23,7 @@ for ifile in file_category:
 pre_category = 'init'
 with open("README.md", 'w') as indexf:
     indexf.write("# Jupyter Notebook Index\n")
-    for icategory in set(categorys):
+    for icategory in set(sorted(categorys)):
         indexf.write("- ["+ icategory +"](#" + icategory.lower() + ")\n")
 
 for ifile in file_category:
