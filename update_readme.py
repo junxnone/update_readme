@@ -16,13 +16,16 @@ file_category = {}
 categorys = []
 for inb in notebook_list:
     file_category[inb] = inb.split('/')[0]
-    categorys.append(inb.split('/')[0])
 
+for ifile in file_category:
+    categorys.append(file_category[ifile])
+         
 pre_category = 'init'
 with open("README.md", 'w') as indexf:
     indexf.write("# Jupyter Notebook Index\n")
     for icategory in set(categorys):
         indexf.write("- ["+ icategory +"](#" + icategory + ")\n")
+
 for ifile in file_category:
     category = file_category[ifile]
 
