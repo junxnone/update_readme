@@ -24,7 +24,7 @@ pre_category = 'init'
 with open("README.md", 'w') as indexf:
     indexf.write("# Jupyter Notebook Index\n")
     for icategory in set(categorys):
-        indexf.write("- ["+ icategory +"](#" + icategory + ")\n")
+        indexf.write("- ["+ icategory +"](#" + icategory.lower() + ")\n")
 
 for ifile in file_category:
     category = file_category[ifile]
