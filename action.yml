@@ -21,7 +21,7 @@ runs:
   - name: update readme index
     shell: bash
     run: |
-      wget https://raw.githubusercontent.com/junxnone/update-readme/main/update_readme.py
+      wget https://raw.githubusercontent.com/junxnone/update-readme/examples/update_readme.py
       python update_readme.py --repo "${{ github.repository }}"
   - name: push to gh-page
     shell: bash
