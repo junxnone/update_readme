@@ -19,8 +19,9 @@ for inb in notebook_list:
 
 for ifile in file_category:
     categorys.append(file_category[ifile])
-'''
+
 pre_category = 'init'
+'''
 with open("README.md", 'w') as indexf:
     indexf.write("# Jupyter Notebook Index\n")
     for icategory in set(sorted(categorys)):
