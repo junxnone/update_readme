@@ -21,6 +21,8 @@ for ifile in file_category:
     categorys.append(file_category[ifile])
 
 pre_category = 'init'
+with open("README.md", 'w') as indexf:
+    indexf.write("# Jupyter Notebooks\n\n")
 
 for ifile in file_category:
     category = file_category[ifile]
