@@ -26,8 +26,7 @@ runs:
 
       cat linux.md |grep -v "Wiki History" |sed 's/\](\//\](linux\/docs\//g'|tee sitemap.md
       cat xwiki.md |grep -v "Wiki History" |sed 's/\](\//\](xwiki\/docs\//g'|tee -a sitemap.md
-      wget https://raw.githubusercontent.com/junxnone/update-readme/ghmainpage/update_sitemap.py
-      python update_sitemap.py
+
   - name: push to gh-page
     shell: bash
     run: |
