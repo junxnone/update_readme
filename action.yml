@@ -37,9 +37,9 @@ runs:
       wget https://raw.githubusercontent.com/junxnone/linux/main/docs/hist.md -O linux_hist.md
       wget https://raw.githubusercontent.com/junxnone/xwiki/main/docs/hist.md -O xwiki_hist.md
       wget https://raw.githubusercontent.com/junxnone/aiwiki/main/docs/hist.md -O aiwiki_hist.md
-      cat linux_hist.md |grep -v 'Wiki History'|tee tmp.md
-      cat xwiki_hist.md |grep -v 'Wiki History'|tee -a tmp.md
-      cat aiwiki_hist.md |grep -v 'Wiki History'|tee -a tmp.md
+      cat linux_hist.md |grep -v 'Wiki History'|sed 's/\](\//\](linux\//g'|tee tmp.md
+      cat xwiki_hist.md |grep -v 'Wiki History'|sed 's/\](\//\](xwiki\//g'|tee -a tmp.md
+      cat aiwiki_hist.md |grep -v 'Wiki History'|sed 's/\](\//\](aiwiki\//g'|tee -a tmp.md
       cat tmp.md |sort -r | tee sitehist.md
       
   - name: push to gh-page
