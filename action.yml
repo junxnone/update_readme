@@ -28,9 +28,9 @@ runs:
       echo "# Junxnone" |tee sitemap.md
       echo "## Linux" |tee -a sitemap.md
       cat linux.md |grep -v "Wiki History" |sed 's/\](\//\](linux\//g'|tee -a sitemap.md
-      echo "## X" |tee sitemap.md
+      echo "## X" |tee -a sitemap.md
       cat xwiki.md |grep -v "Wiki History" |sed 's/\](\//\](xwiki\//g'|tee -a sitemap.md
-      echo "## AI" |tee sitemap.md
+      echo "## AI" |tee -a sitemap.md
       cat aiwiki.md |grep -v "Wiki History" |sed 's/\](\//\](aiwiki\//g'|tee -a sitemap.md
       cat samples.md |tee -a sitemap.md
 
