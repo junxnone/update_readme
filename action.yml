@@ -34,6 +34,14 @@ runs:
       cat aiwiki.md |grep -v "Wiki History" |sed 's/\](\//\](aiwiki\//g'|tee -a sitemap.md
       cat samples.md |tee -a sitemap.md
 
+      wget https://raw.githubusercontent.com/junxnone/linux/main/docs/hist.md -O linux_hist.md
+      wget https://raw.githubusercontent.com/junxnone/xwiki/main/docs/hist.md -O xwiki_hist.md
+      wget https://raw.githubusercontent.com/junxnone/aiwiki/main/docs/hist.md -O aiwiki_hist.md
+      cat linux_hist.md |grep -v 'Wiki History'|tee tmp.md
+      cat xwiki_hist.md |grep -v 'Wiki History'|tee -a tmp.md
+      cat aiwiki_hist.md |grep -v 'Wiki History'|tee -a tmp.md
+      cat tmp.md |sort -r | tee sitehist.md
+      
   - name: push to gh-page
     shell: bash
     run: |
@@ -41,7 +49,7 @@ runs:
       git config user.email "${{ inputs.actor }}@users.noreply.github.com"
       git config user.name "${{ inputs.actor }}"
       git pull ${REMOTE}
-      git add sitemap.md
+      git add sitemap.md sitehist.md
       git status
       git commit -am "Update Index"
       git push ${REMOTE}  ${{ inputs.branch }}
