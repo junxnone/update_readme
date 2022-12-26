@@ -22,14 +22,14 @@ for ifile in file_category:
 
 pre_category = 'init'
 with open("README.md", 'w') as indexf:
-    indexf.write("# Jupyter Notebooks\n\n")
+    indexf.write("## Jupyter Notebooks Samples\n\n")
 
 for ifile in file_category:
     category = file_category[ifile]
 
     if category != pre_category:
         with open("README.md", 'a') as indexf:
-            indexf.write("\n\n## " + category + "\n- [" + ifile.split('/')[1] + "](https://" + user_name + ".github.io/" + repo_name + "/nbv.html?notebook_name=" + ifile + ")")
+            indexf.write("\n\n### " + category + "\n- [" + ifile.split('/')[1] + "](https://" + user_name + ".github.io/" + repo_name + "/nbv.html?notebook_name=" + ifile + ")")
     else:
         with open("README.md", 'a') as indexf:
             indexf.write("\n- [" + ifile.split('/')[1] + "](https://" + user_name + ".github.io/" + repo_name + "/nbv.html?notebook_name=" + ifile + ")")
