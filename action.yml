@@ -23,9 +23,15 @@ runs:
     run: |
       wget https://raw.githubusercontent.com/junxnone/linux/main/docs/_sidebar.md -O linux.md
       wget https://raw.githubusercontent.com/junxnone/xwiki/main/docs/_sidebar.md -O xwiki.md
-
+      wget https://raw.githubusercontent.com/junxnone/aiwiki/main/docs/_sidebar.md -O aiwiki.md
+      
+      echo "# Junxnone" |tee sitemap.md
+      echo "## Linux" |tee sitemap.md
       cat linux.md |grep -v "Wiki History" |sed 's/\](\//\](linux\//g'|tee sitemap.md
+      echo "## X\n" |tee sitemap.md
       cat xwiki.md |grep -v "Wiki History" |sed 's/\](\//\](xwiki\//g'|tee -a sitemap.md
+      echo "## AI\n" |tee sitemap.md
+      cat aiwiki.md |grep -v "Wiki History" |sed 's/\](\//\](aiwiki\//g'|tee -a sitemap.md
 
   - name: push to gh-page
     shell: bash
