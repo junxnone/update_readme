@@ -18,5 +18,5 @@ for ijsonf in args.kgf:
             skg['links'].append(ilink)
             
 print(skg)
-with open("skg.json", 'w') as f:
+with open("kg.json", 'w') as f:
     json.dump(skg, f)
