@@ -46,6 +46,12 @@ runs:
       cat tmp.md |sort -r | tee sitehist.md
       date  -d "+8 hour" "+> \`@%Y.%m.%d %H:%M:%S\`" | tee -a sitehist.md
 
+      wget https://raw.githubusercontent.com/junxnone/linux/main/docs/kg.json -O linux_kg.json
+      wget https://raw.githubusercontent.com/junxnone/xwiki/main/docs/kg.json -O xwiki_kg.json
+      wget https://raw.githubusercontent.com/junxnone/aiwiki/main/docs/kg.json -O aiwiki_kg.json
+      wget https://raw.githubusercontent.com/junxnone/update-readme/ghmainpage/merge_kg.py
+      python3 merge_kg.py --kgf linux_kg.json xwiki_kg.json aiwiki_kg.json
+
   - name: push to gh-page
     shell: bash
     run: |
@@ -53,7 +59,7 @@ runs:
       git config user.email "${{ inputs.actor }}@users.noreply.github.com"
       git config user.name "${{ inputs.actor }}"
       git pull ${REMOTE}
-      git add sitemap.md sitehist.md
+      git add sitemap.md sitehist.md kg.json
       git status
       git commit -am "Update Index"
       git push ${REMOTE}  ${{ inputs.branch }}
