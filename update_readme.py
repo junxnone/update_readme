@@ -18,3 +18,4 @@ with open("README.md", 'w') as indexf:
         ititle = ikg.split('_')[-1].split('.')[0]
         print(ititle)
         indexf.write("<!-- ko-fi :id=" + "junxnone.github.io/jstools/md3dkg/?md=https://" + user_name + ".github.io/" + repo_name + '/' + ikg +  " :color=#1599d6 -->\n" + ititle + "\n" + "<!-- ko-fi -->\n" )
+    indexf.write("<!-- ko-fi :id=" + "github.com/junxnone/tmdkg/issues/new :color=#1599d6 -->\n" +  "Create New KG\n" + "<!-- ko-fi -->\n" )
