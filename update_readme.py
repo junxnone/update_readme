@@ -10,28 +10,11 @@ print(args.repo)
 user_name = args.repo.split('/')[0]
 repo_name = args.repo.split('/')[1]
 
-notebook_list = sorted(glob.glob('*/*.ipynb'))
-
-file_category = {}
-categorys = []
-for inb in notebook_list:
-    file_category[inb] = inb.split('/')[0]
-
-for ifile in file_category:
-    categorys.append(file_category[ifile])
-
-pre_category = 'init'
+md_list = sorted(glob.glob('docs/*.md'))
+print(md_list)
 with open("README.md", 'w') as indexf:
-    indexf.write("# Jupyter Notebooks\n\n")
-
-for ifile in file_category:
-    category = file_category[ifile]
-
-    if category != pre_category:
-        with open("README.md", 'a') as indexf:
-            indexf.write("\n\n## " + category + "\n- [" + ifile.split('/')[1] + "](https://" + user_name + ".github.io/" + repo_name + "/nbv.html?notebook_name=" + ifile + ")")
-    else:
-        with open("README.md", 'a') as indexf:
-            indexf.write("\n- [" + ifile.split('/')[1] + "](https://" + user_name + ".github.io/" + repo_name + "/nbv.html?notebook_name=" + ifile + ")")
-
-    pre_category = file_category[ifile]
+    indexf.write("# 3D Knowledge Graph\n\n")
+    for ikg in md_list:
+        ititle = ikg.split('_')[-1].split('.')[0]
+        print(ititle)
+        indexf.write("- [" + ititle + "](https://" + user_name + ".github.io/" + repo_name + '/' + ikg+ ')\n')
