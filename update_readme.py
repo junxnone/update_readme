@@ -17,4 +17,4 @@ with open("README.md", 'w') as indexf:
     for ikg in md_list:
         ititle = ikg.split('_')[-1].split('.')[0]
         print(ititle)
-        indexf.write("- [" + ititle + "](https://junxnone.github.io/jstools/md3dkg/?md=https://" + user_name + ".github.io/" + repo_name + '/' + ikg+ ')\n')
+        indexf.write("<!-- ko-fi :id=" + "junxnone.github.io/jstools/md3dkg/?md=https://" + user_name + ".github.io/" + repo_name + '/' + ikg +  " :color=#1599d6 -->\n" + ititle + "\n" + "<!-- ko-fi -->\n" )
