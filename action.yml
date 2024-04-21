@@ -24,6 +24,7 @@ runs:
       wget https://raw.githubusercontent.com/junxnone/linux/main/docs/_sidebar.md -O linux.md
       wget https://raw.githubusercontent.com/junxnone/xwiki/main/docs/_sidebar.md -O xwiki.md
       wget https://raw.githubusercontent.com/junxnone/aiwiki/main/docs/_sidebar.md -O aiwiki.md
+      wget https://raw.githubusercontent.com/junxnone/opt/main/docs/_sidebar.md -O opt.md
       wget https://raw.githubusercontent.com/junxnone/samples/main/README.md -O samples.md
       echo "# Junxnone" |tee sitemap.md
       date  -d "+8 hour" "+> \`@%Y.%m.%d %H:%M:%S\`" | tee -a sitemap.md
@@ -34,14 +35,18 @@ runs:
       cat xwiki.md |grep -v "Wiki History"|grep -v Junx |grep -v "\-\-\-" |sed 's/\](\//\](xwiki\//g'|tee -a sitemap.md
       echo "## AI" |tee -a sitemap.md
       cat aiwiki.md |grep -v "Wiki History"|grep -v Junx |grep -v "\-\-\-" |sed 's/\](\//\](aiwiki\//g'|tee -a sitemap.md
+      echo "## OPT" |tee -a sitemap.md
+      cat opt.md |grep -v "Wiki History"|grep -v Junx |grep -v "\-\-\-" |sed 's/\](\//\](opt\//g'|tee -a sitemap.md
       cat samples.md |tee -a sitemap.md
 
       wget https://raw.githubusercontent.com/junxnone/linux/main/docs/hist.md -O linux_hist.md
       wget https://raw.githubusercontent.com/junxnone/xwiki/main/docs/hist.md -O xwiki_hist.md
       wget https://raw.githubusercontent.com/junxnone/aiwiki/main/docs/hist.md -O aiwiki_hist.md
+      wget https://raw.githubusercontent.com/junxnone/opt/main/docs/hist.md -O opt_hist.md
       cat linux_hist.md |grep -v 'Wiki History'|sed 's/\](\//\](linux\//g'|tee tmp.md
       cat xwiki_hist.md |grep -v 'Wiki History'|sed 's/\](\//\](xwiki\//g'|tee -a tmp.md
       cat aiwiki_hist.md |grep -v 'Wiki History'|sed 's/\](\//\](aiwiki\//g'|tee -a tmp.md
+      cat opt_hist.md |grep -v 'Wiki History'|sed 's/\](\//\](opt\//g'|tee -a tmp.md
       
       cat tmp.md |sort -r | tee sitehist.md
       date  -d "+8 hour" "+> \`@%Y.%m.%d %H:%M:%S\`" | tee -a sitehist.md
@@ -49,8 +54,9 @@ runs:
       wget https://raw.githubusercontent.com/junxnone/linux/main/docs/kg.json -O linux_kg.json
       wget https://raw.githubusercontent.com/junxnone/xwiki/main/docs/kg.json -O xwiki_kg.json
       wget https://raw.githubusercontent.com/junxnone/aiwiki/main/docs/kg.json -O aiwiki_kg.json
+      wget https://raw.githubusercontent.com/junxnone/opt/main/docs/kg.json -O opt_kg.json
       wget https://raw.githubusercontent.com/junxnone/update-readme/ghmainpage/merge_kg.py
-      python3 merge_kg.py --kgf linux_kg.json xwiki_kg.json aiwiki_kg.json
+      python3 merge_kg.py --kgf linux_kg.json xwiki_kg.json aiwiki_kg.json opt_kg.json
 
   - name: push to gh-page
     shell: bash
