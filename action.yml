@@ -35,7 +35,7 @@ runs:
       cat xwiki.md |grep -v "Wiki History"|grep -v Junx |grep -v "\-\-\-" |sed 's/\](\//\](xwiki\//g'|tee -a sitemap.md
       echo "## AI" |tee -a sitemap.md
       cat aiwiki.md |grep -v "Wiki History"|grep -v Junx |grep -v "\-\-\-" |sed 's/\](\//\](aiwiki\//g'|tee -a sitemap.md
-      echo "## OPT" |tee -a sitemap.md
+      echo "## 性能优化" |tee -a sitemap.md
       cat opt.md |grep -v "Wiki History"|grep -v Junx |grep -v "\-\-\-" |sed 's/\](\//\](opt\//g'|tee -a sitemap.md
       cat samples.md |tee -a sitemap.md
 
